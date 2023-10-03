@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/cerulean/bootstrap.min.css"
+    integrity="sha512-dQLT/B7byn2LjN/DN4zeBKpwGV6qbidV0XiMRWQOL7TGrV7FkZFldkGG+DGMU+CQnMTcRZlUI7GMWt1j6akNew=="
+    crossorigin="anonymous" />
+  <title>Weather App </title>
+</head>
+
+<body>
+    <center><h4 class="display-4 fw-normal text-body-emphasis">WEATHER Prediction APP</h4></center>
+    <br><br>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <form method="post" class="col-md">
+      {% csrf_token %}
+      <div class=" input-group">
+
+      <input type="text" class="form-control" name="city" placeholder="Choose Your City ...">
+      <div class="input-group-btn">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+      </div>
+      <form>
+  </nav>
+  <br> <br>
+  <div class="container">
+  <h5>Current weather<span id="city"></span></h5>
+</div>
+    {% if temp and pressure and humidity and main and description  %}
+    <div class="containerr" >
+    <div class="card-body">
+        <h4><span class="badge badge-secondary">Temperature :</span> {{temp}}</h4>
+        <h4><span class="badge badge-secondary">Pressure :</span> {{pressure}} </h4>
+        <h4><span class="badge badge-secondary">Humidity : </span> {{humidity}}</h4>
+        <h4><span class="badge badge-secondary">Main : </span> {{main}}</h4>
+        <h4><span class="badge badge-secondary">Description : </span> {{description}}</h4>
+      </div>
+      {% endif %}
+    </div>
+</body>
+
+</html>
